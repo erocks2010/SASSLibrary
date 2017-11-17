@@ -1,0 +1,13 @@
+@import 'partials/_button';
+@import 'partials/_menu';
+$navMenuFont:'Orbitron','Times New Roman';
+
+body{
+  #mainNavMenu{
+    @include navigationMenu(25px,400px,20px,$navMenuFont,bold,rgb(205, 92, 92),60%,2px,rgb(250, 128, 114),ease-in,250ms,vertical,fixed);
+    @extend %textStylingShadow;
+  }
+  button{
+    @extend .buttonLarge;
+  }
+}

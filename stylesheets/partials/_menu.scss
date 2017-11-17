@@ -1,0 +1,65 @@
+%textStylingShadow{
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  font: normal 10px/normal "Comfortaa", Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  text-shadow: 2px 2px 0 rgb(255,210,23) , 3px 3px 0 rgb(90,199,255) ;
+}
+@mixin navigationMenu($menuHeight,$menuWidth,$fontSize,$fontFamily,$fontWeight,$fontColor,$underlineWidthPerc,$underlineHeight,$underlineColor,$underlineEase,$underlineEaseTime,$orientation,$position:null) {
+  /* Using FLEXBOX display model;*/
+  display: flex;
+  @if ($orientation == 'horizontal') {
+    flex-direction: column;
+  } @else if ($orientation == 'vertical') {
+    flex-direction: row;
+  }
+  felx-wrap: wrap;
+  justify-content: space-evenly;
+  align-item: baseline;
+  div {
+    flex-shrink: 1;
+    border: dotted 1px green;
+    /*Style for Menu Items*/
+    a {
+      font: {
+        size: $fontSize;
+        family: $fontFamily;
+        weight: $fontWeight;
+      }
+      color: $fontColor;
+    }
+    /*Below will create an underline when hovered*/
+    a:after{
+      content:'';
+      width:0px;
+      height:$underlineHeight;
+      display:block;
+      background:$underlineColor;
+      transition: all $underlineEaseTime $underlineEase;
+    }
+    a:hover:after{
+      width:$underlineWidthPerc;
+    }
+    /*---------------------------------------------*/
+  }
+  /*-----------------------------------------*/
+  /*Handling Position of Menu*/
+  @if ($position=='fixed') {
+    position: fixed;
+    top: 0;
+    right: 0;
+  } @else {
+    position: absolute;
+    top: 0;
+    rigth: 0;
+  }
+  /*------------------------------------------*/
+  width: $menuWidth;
+  height: $menuHeight;
+
+}
